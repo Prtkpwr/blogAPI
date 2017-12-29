@@ -16,14 +16,11 @@ var blogSchema = new Schema ({
 	title    	 :   {type:String,default:'',required:true},
 	subtitle 	 :   {type:String,default:''},
 	blogBody 	 :   {type:String,default:'',required:true},
-	authorInfo	 :   {
-						name:{type:String,default:''},
-						age:{type:Number},
-						email:{type:String}
-					 }
+	authorInfo	 :   {},
+	tags         : []
 
 	
-},{timestamps:true});      //Schema with timestamps(createdAt and updatedAt) option set to true
+},{timestamps:true});      //for createdAt and updatedAt
 
 // connect model and schema
 mongoose.model('sampleBlog',blogSchema);

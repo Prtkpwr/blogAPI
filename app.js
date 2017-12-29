@@ -30,7 +30,7 @@ var blogModel = mongoose.model('sampleBlog');
 app.use(function(req,res,next){
 
 	console.log("Logging started");
-	console.log("User requested"+ req.originalUrl);
+	console.log("User requested "+ req.originalUrl);
 	console.log("User's IP adress: "+req.ip);
 	console.log("Logging ended");
 	next();
@@ -66,7 +66,7 @@ app.post('/blog/create',function(req,res){
 		blogBody : req.body.blogBody
 	});
 
-	newBlog.authorInfo = {name:req.body.name,age:req.body.age,email:req.body.email};
+	newBlog.authorInfo = {authorName:req.body.name,authorEmail:req.body.email};
 
     newBlog.tags = (req.body.tags != undefined && req.body.tags != null) ? req.body.tags.split(',') : '';
     
@@ -147,10 +147,7 @@ app.post('/blog/delete/:Id',function(req,res){
 app.get('*',function(request,response,next){
 		
 	response.status = 404 ;
-
-	//calling error
-
-	next("Error");
+	next("Error Occured");
 });
 
 
@@ -159,7 +156,7 @@ app.get('*',function(request,response,next){
 app.use(function(err,req,res,next){
 	console.log("Error handler used");
 	if(res.status == 404){
-		res.send("MAke sure you entered a correct path ! arrgghhhhh!!! -_- ");
+		res.send("Make sure you entered a correct path !! -_- ");
 	}
 	else{
 		res.send(err);
