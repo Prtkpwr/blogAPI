@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 //database
 
-var databasePath = "mongodb://localhost/blogApp";
+var databasePath = "mongodb://blog:blogapi1@ds163300.mlab.com:63300/blogapidatabase";
 
 db = mongoose.connect(databasePath);
 
